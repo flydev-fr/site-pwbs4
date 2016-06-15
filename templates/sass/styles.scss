@@ -1,0 +1,15 @@
+@import "_variables.scss";
+@import "../bower_components/bootstrap/scss/bootstrap";
+$fa-font-path: "../bower_components/font-awesome/fonts";
+@import "../bower_components/font-awesome/scss/font-awesome";
+
+// we define a new button
+$btn-bootstrap-bg:             #563d7c !default;
+$btn-bootstrap-color:          #ffffff;
+$btn-bootstrap-border:         #563d7c;
+.btn-bootstrap-outline {
+  @include button-outline-variant($btn-bootstrap-bg);
+}
+.btn-bootstrap {
+  @include button-variant($btn-bootstrap-color, $btn-bootstrap-bg, $btn-bootstrap-border);
+}
