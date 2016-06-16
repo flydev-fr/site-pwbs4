@@ -145,7 +145,7 @@ function renderChildrenOf($pa, $output = '', $level = 0) {
         }
         if ($child->numChildren && count($child->parents) == 1) {
             $inline = "style='display:inline-block;'";
-            $caret  = "style='margin-left:-1rem; padding-top: 11rem; padding-bottom: 1rem;'";
+            $caret  = "style='margin-left:-1rem;'";
             $output .= "<li$class><a href='$child->url' class='nav-link' $inline>$child->title</a><a href='#'$atoggle $inline><b class='caret' $caret></b></a>";
         } else if ($child->numChildren && count($child->parents) > 1) {
             $output .= "<li$class><a tabindex='-1' href='$child->url'$atoggle>$child->title</a>";
