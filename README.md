@@ -7,7 +7,7 @@ PWBS-4 is a profile based on the "minimal site profile (intermediate edition)" a
 * Font-Awesome SASS
 * [MeanMenu](http://www.meanthemes.com/plugins/meanmenu/)
 * Render / helper functions for :
-    * Simple <ul> navigation
+    * Simple ul navigation
     * Bootstrap Multi-level navbar
     * MeanMenu Responsive menu for mobile device
     * Bootstrap Carousel
