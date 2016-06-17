@@ -31,6 +31,9 @@ form.search {
 .mean-nav ul li {
     line-height: 24px;
 }
+.mean-container .mean-nav ul li a.mean-expand {
+    height: 24px;
+}
 
 /* search form on mobile */
 .mobile-search-form  {
