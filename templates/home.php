@@ -1,4 +1,4 @@
-<?php namespace ProcessWire;
+<?php 
 
 // render the carousel
 $content .= bsRenderCarousel($page->images);

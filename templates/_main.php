@@ -1,4 +1,4 @@
-<?php namespace ProcessWire;
+<?php
 
 /**
  * This is the main markup file containing the container HTML that all pages are output in.

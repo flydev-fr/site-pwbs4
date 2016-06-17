@@ -1,4 +1,4 @@
-<?php namespace ProcessWire;
+<?php 
 
 // search.php template file
 // See README.txt for more information.
