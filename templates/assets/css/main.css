@@ -1,0 +1,168 @@
+/* Space out content a bit */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 105%;
+    line-height: 1.8em;
+    padding-top: 5rem;
+    padding-bottom: 1.5rem;
+}
+.navbar-brand {
+   line-height: 1.8em;
+}
+.navbar-brand-mobile {
+    position: absolute;
+    color: #ffffff;
+    left: 1em;
+    top: 0;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+.navbar-brand-mobile:hover {
+    color: #ffffff;
+}
+form.search {
+    margin-top: .28rem;
+}
+
+/* meanmenu adjustment (see body: line-height) */
+.mean-nav ul li {
+    line-height: 24px;
+}
+
+/* search form on mobile */
+.mobile-search-form  {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+.mobile-search-form input {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.5);
+    border-bottom: 1px dashed #bebcc5;
+    height: 3.125em;
+    outline: none;
+    padding: 0 5%;
+    font-style: italic;
+}
+.mobile-search-form input:focus {
+    border-bottom: 1px dashed #ffffff;
+}
+
+/* Bootstrap 4 navbar with multi level fix
+ * https://processwire.com/talk/topic/5680-bootstrap-3-navigation-with-multiple-leveltier-fix/
+*/
+.nav-link {
+    font-family: 'Open Sans', Sans-Serif;
+    font-weight: 300;
+}
+.dropdown-submenu{
+    position:relative;
+}
+
+.dropdown-submenu > .dropdown-menu
+{
+    top:0;
+    left:100%;
+    margin-top:-6px;
+
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu{
+    display:block;
+}
+
+.dropdown-submenu > a:after{
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:8px;
+    margin-right:-10px;
+}
+
+.dropdown-submenu:hover > a:after{
+    border-left-color:#ffffff;
+}
+
+.dropdown-submenu .pull-left{
+    float:none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu{
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+
+.dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
+    color: #333;
+    text-decoration: none;
+    background-color: #626262;
+    outline: 0;
+}
+/* Custom dropdown bg-color on mouse hover */
+li.dropdown-item:hover {
+    background-color: #626262;
+    color: #333333;
+}
+
+/* Example Custom bootstrap button */
+.btn-bootstrap-outline, .btn-bootstrap-outline:focus, .btn-bootstrap-outline:hover {
+    color: #563d7c;
+    background-color: transparent;
+    background-image: none;
+    border-color: #563d7c;
+}
+.btn-bootstrap-outline:hover {
+    color: #ffffff;
+    background-color: #563d7c;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 1.5rem;
+    color: #777;
+    border-top: .05rem solid #e5e5e5;
+}
+
+/* Media queries for responsive layout */
+@media only screen and (max-width: 768px) {
+    /* mobile layout */
+    body {
+        padding-top: 0;
+    }
+    body, td, textarea {
+        font-size: 100%;
+    }
+
+    #content {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    /* extra-wide desktop layout */
+    body, td, textarea {
+        font-size: 115%;
+        line-height: 1.8em;
+    }
+}
+
+
+
