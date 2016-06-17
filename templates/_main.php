@@ -28,11 +28,13 @@ if(!$useMain || $config->ajax) return;
 
 	<title><?php echo $browserTitle; ?></title>
 
-	<?php if($page->summary) echo "<meta name='description' content='$page->summary' />"; ?>
+	<?php if($page->summary) echo "<meta name='description' content=\"{$page->summary}\" />"; ?>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-	<link href="<?php echo $config->urls->templates; ?>css/styles.css" media="all" rel="stylesheet" type="text/css" />
-	<link href="<?php echo $config->urls->templates; ?>css/meanmenu.min.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $config->urls->templates; ?>css/main.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $config->urls->templates; ?>assets/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $config->urls->templates; ?>assets/css/tether.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $config->urls->templates; ?>assets/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="<?php echo $config->urls->templates; ?>assets/css/meanmenu.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="<?php echo $config->urls->templates; ?>assets/css/main.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body class='<?php echo "template-{$page->template} section-{$page->rootParent->name} page-$page"; ?>'>
 
@@ -64,7 +66,7 @@ if(!$useMain || $config->ajax) return;
 
 				<!-- search form -->
 				<form class="search form-inline pull-xs-right" action='<?php echo $pages->get('template=search')->url; ?>' method='get'>
-					<input class="form-control" data-toggle="tooltip" data-placement="bottom" title="Search the site" style="width: 100%;" type="text" name="q" placeholder="Search" value="<?php echo $sanitizer->entities($input->whitelist('q')); ?>" />
+					<input class="form-control" data-toggle="tooltip" data-placement="bottom" title="Search the site" type="text" name="q" placeholder="Search" value="<?php echo $sanitizer->entities($input->whitelist('q')); ?>" />
 				</form>
 			</div>
 		</div>
@@ -116,13 +118,13 @@ if(!$useMain || $config->ajax) return;
 
 	<script type="text/javascript">
 	if (typeof jQuery == 'undefined') {
-	    document.write(unescape("%3Cscript src='<?php echo $config->urls->templates; ?>bower_components/jquery/dist/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+	    document.write(unescape("%3Cscript src='<?php echo $config->urls->templates; ?>assets/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
 	}
 	</script>
-	<script src="<?php echo $config->urls->templates; ?>bower_components/tether/dist/js/tether.min.js"></script>
-	<script src="<?php echo $config->urls->templates; ?>bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="<?php echo $config->urls->templates; ?>js/jquery.meanmenu.min.js"></script>
-	<script src="<?php echo $config->urls->templates; ?>js/scripts.js"></script>
+	<script src="<?php echo $config->urls->templates; ?>assets/js/tether.min.js"></script>
+	<script src="<?php echo $config->urls->templates; ?>assets/js/bootstrap.min.js"></script>
+	<script src="<?php echo $config->urls->templates; ?>assets/js/jquery.meanmenu.min.js"></script>
+	<script src="<?php echo $config->urls->templates; ?>assets/js/scripts.js"></script>
 	<?php foreach($config->scripts as $url) echo "<script src='$url'></script>"; ?>
 </body>
 </html>
