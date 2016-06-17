@@ -109,6 +109,12 @@ form.search {
     border-radius:6px 0 6px 6px;
 }
 
+.dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
+    color: #333;
+    text-decoration: none;
+    background-color: #626262;
+    outline: 0;
+}
 /* Custom dropdown bg-color on mouse hover */
 li.dropdown-item:hover {
     background-color: #626262;
