@@ -119,6 +119,18 @@ li.dropdown-item:hover {
     color: #333333;
 }
 
+/* Example Custom bootstrap button */
+.btn-bootstrap-outline, .btn-bootstrap-outline:focus, .btn-bootstrap-outline:hover {
+    color: #563d7c;
+    background-color: transparent;
+    background-image: none;
+    border-color: #563d7c;
+}
+.btn-bootstrap-outline:hover {
+    color: #ffffff;
+    background-color: #563d7c;
+}
+
 /* Custom page footer */
 .footer {
     padding-top: 1.5rem;
