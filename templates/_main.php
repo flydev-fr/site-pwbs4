@@ -39,7 +39,7 @@ if(!$useMain || $config->ajax) return;
 <body class='<?php echo "template-{$page->template} section-{$page->rootParent->name} page-$page"; ?>'>
 
 <!--Mobile Menu-->
-<header id="mobile-menu" class="hidden-xs-up">
+<header id="mobile-menu" class="hidden-sm-up">
 	<nav>
 		<a class='navbar-brand navbar-brand-mobile hidden-md-up' href='<?php echo $homepage->url; ?>'>Pwbs4</a>
 		<?php
