@@ -2,6 +2,8 @@
 
 PWBS-4 is a profile based on the "minimal site profile (intermediate edition)" and bundled with Boostrap v4.0.0-alpha.2.
 
+The precompiled version can be [downloaded](https://github.com/flydev-fr/site-pwbs4/archive/precompiled.zip) at github.
+
 ### Features
 * Bootstrap SASS
 * Font-Awesome SASS
@@ -9,9 +11,9 @@ PWBS-4 is a profile based on the "minimal site profile (intermediate edition)" a
 * Render / helper functions for :
     * Simple ul navigation
     * Bootstrap Multi-level navbar
-    * MeanMenu Responsive menu for mobile device
+    * MeanMenu - Responsive menu for mobile device
     * Bootstrap Carousel
-    * Boostrap Cards
+    * Bootstrap Cards
     
 ### Dependencies
 * jQuery
