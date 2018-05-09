@@ -1,3 +1,9 @@
+# This Site Profile is deprecated
+A more up to date site profile using Bootstrap 4 can be found [here](https://github.com/rafaoski/site-bs4)
+
+If you have a PR to update this repo, I will be glad to integrate it!
+
+
 ### PWBS-4 Minimal site profile for ProcessWire
 
 PWBS-4 is a profile based on the "minimal site profile (intermediate edition)" and bundled with Boostrap v4.0.0-alpha.2.
