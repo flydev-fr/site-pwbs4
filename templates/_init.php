@@ -1,4 +1,5 @@
-<?php
+<?php namespace ProcessWire;
+
 /**
  * _init.php - Initialize site variables and includes. 
  *
@@ -6,6 +7,15 @@
  * This behavior was defined in /site/config.php - $config->prependTemplateFile
  *
  */
+
+ $nodeAssets = $config->urls->assets . 'dev/node_modules/';
+
+ if ($config->debug === true) {
+    $staticAssets = $config->urls->assets . 'dev/src/';
+ }
+ else {
+    $staticAssets = $config->urls->assets . 'static/';
+ }
 
 /*
  * Initialize some variables used by templates and populate default values.

@@ -1,4 +1,4 @@
-<?php
+<?php namespace ProcessWire;
 
 /**
  * This is the main markup file containing the container HTML that all pages are output in.
@@ -28,101 +28,103 @@ if(!$useMain || $config->ajax) return;
 
 	<title><?php echo $browserTitle; ?></title>
 
-	<?php if($page->summary) echo "<meta name='description' content='$page->summary' />"; ?>
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-	<link href="<?php echo $config->urls->templates; ?>css/styles.css" media="all" rel="stylesheet" type="text/css" />
-	<link href="<?php echo $config->urls->templates; ?>css/meanmenu.min.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="<?php echo $config->urls->templates; ?>css/main.css" media="all" rel="stylesheet" type="text/css" />
+  <?php if($page->summary) echo "<meta name='description' content='$page->summary' />"; ?>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+<?php if($config->debug === true) : ?>
+	<link href="<?php echo $staticAssets ?>css/styles.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="<?php echo $staticAssets ?>css/main.css" media="all" rel="stylesheet" type="text/css" />
+<?php else: ?>
+  <link href="<?php echo $staticAssets ?>css/styles.min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="<?php echo $staticAssets ?>css/main.css" media="all" rel="stylesheet" type="text/css" />
+<?php endif; ?>
 </head>
 <body class='<?php echo "template-{$page->template} section-{$page->rootParent->name} page-$page"; ?>'>
 
-<!--Mobile Menu-->
-<header id="mobile-menu" class="hidden-sm-up">
-	<nav>
-		<a class='navbar-brand navbar-brand-mobile hidden-md-up' href='<?php echo $homepage->url; ?>'>Pwbs4</a>
-		<?php
-		$pa = $homepage->children;
-		$pa = $pa->prepend($homepage);
-		echo renderMobileNavbar($pa);
-		?>
-	</nav>
-</header>
-<!--/#mobile-menu-->
+  <!--Mobile Menu-->
+  <header id="mobile-menu" class="d-none">
+    <nav>
+      <a class='navbar-brand navbar-brand-mobile d-d-sm-none' href='<?php echo $homepage->url; ?>'>Pwbs4</a>
+      <?php
+      $pa = $homepage->children;
+      $pa = $pa->prepend($homepage);
+      echo renderMobileNavbar($pa);
+      ?>
+    </nav>
+  </header>
+  <!--/#mobile-menu-->
 
-<!--navbar-->
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse hidden-sm-down">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<a class="navbar-brand hidden-xs-down" href="<?php echo $homepage->url ?>">Pwbs4</a>
+  <!--navbar-->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light d-xl-flex border-bottom">
+    <a class="navbar-brand" href="#">PWBS4</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-				<?php
-				$pa = $homepage->children;
-				$pa = $pa->prepend($homepage);
-				echo renderChildrenOf($pa);
-				?>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <?php
+        $pa = $homepage->children;
+        $pa = $pa->prepend($homepage);
+        echo renderChildrenOf($pa);
+      ?>
+        
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <!--/navbar-->
 
-				<!-- search form -->
-				<form class="search form-inline pull-xs-right" action='<?php echo $pages->get('template=search')->url; ?>' method='get'>
-					<input class="form-control" data-toggle="tooltip" data-placement="bottom" title="Search the site" style="width: 100%;" type="text" name="q" placeholder="Search" value="<?php echo $sanitizer->entities($input->whitelist('q')); ?>" />
-				</form>
-			</div>
-		</div>
-	</div>
-</nav>
-<!--/navbar-->
 
-
-	<!-- breadcrumbs -->
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<ol class="breadcrumb bg-faded home m-t-1">
-					<?php
-					foreach($page->parents() as $item) {
-						echo "<li><a href='$item->url'>$item->title</a></li> ";
-					}
-					// optionally output the current page as the last item
-					echo "<li>$page->title</li> ";
-					?>
-				</ol>
-			</div>
-		</div>
-	</div>
-    <!--/breadcrumbs-->
+  <!-- breadcrumbs -->
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb" class="mt-2">
+      
+      <ol class="breadcrumb">
+        <small class="text-muted d-flex align-self-center mr-2">You are here: </small>
+        <?php
+          foreach($page->parents() as $item) {
+            echo "<li class='breadcrumb-item'><a href='$item->url'>$item->title</a></li> ";
+          }
+          // optionally output the current page as the last item
+          echo "<li class='breadcrumb-item active'>$page->title</li> ";
+        ?>
+      </ol>
+    </nav>
+  </div>
+  <!--/breadcrumbs-->
 
 	<!-- content -->
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
+	<div class="container-fluid">
+		<div class="row d-flex">
 				<?php echo $content; ?>
-			</div>
 		</div>
 	</div>
     <!--/content-->
 
 	<!--footer-->
-	<div class="container">
-		<div class="row">
-            <div class="col-xs-12">
-                <footer class="footer m-t-3">
-                    <p>&copy; <?php echo date('Y'); ?> pwbs4 &nbsp; / &nbsp; Powered by <a href='http://processwire.com'>ProcessWire CMS</a></p>
-                </footer>
-            </div>
+	<div class="container mt-2">
+		<div class="row d-lg-flex">
+      <div class="col-xs-12">
+        <footer class="footer">
+          <p>&copy; <?php echo date('Y'); ?> pwbs4 &nbsp; / &nbsp; Powered by <a href='http://processwire.com'>ProcessWire CMS</a></p>
+        </footer>
+      </div>
 		</div>
 	</div>
 	<!--/footer-->
 
-
+<?php if($config->debug === true) : ?>
 	<script type="text/javascript">
 	if (typeof jQuery == 'undefined') {
-	    document.write(unescape("%3Cscript src='<?php echo $config->urls->templates; ?>bower_components/jquery/dist/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+	    document.write(unescape("%3Cscript src='<?php echo $nodeAssets ?>jquery/dist/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
 	}
 	</script>
-	<script src="<?php echo $config->urls->templates; ?>bower_components/tether/dist/js/tether.min.js"></script>
-	<script src="<?php echo $config->urls->templates; ?>bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="<?php echo $config->urls->templates; ?>js/jquery.meanmenu.min.js"></script>
-	<script src="<?php echo $config->urls->templates; ?>js/scripts.js"></script>
+	<script src="<?php echo $nodeAssets ?>bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo $staticAssets ?>js/scripts.js"></script>
 	<?php foreach($config->scripts as $url) echo "<script src='$url'></script>"; ?>
+<?php else: ?>
+  <script src="<?php echo $staticAssets ?>js/bundle.min.js"></script>
+<?php endif; ?>
 </body>
 </html>

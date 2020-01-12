@@ -1,34 +1,28 @@
-# This Site Profile is deprecated
-A more up to date site profile using Bootstrap 4 can be found [here](https://github.com/rafaoski/site-bs4)
+### Bootstrap 4 Minimal site profile for ProcessWire
 
-If you have a PR to update this repo, I will be glad to integrate it!
+PWBS-4 is a profile based on the "minimal site profile (intermediate edition)" and bundled with *Boostrap v4.4.1*.
 
-
-### PWBS-4 Minimal site profile for ProcessWire
-
-PWBS-4 is a profile based on the "minimal site profile (intermediate edition)" and bundled with Boostrap v4.0.0-alpha.2.
-
-The precompiled version can be [downloaded](https://github.com/flydev-fr/site-pwbs4/archive/precompiled.zip) at github.
 
 ### Features
 * Bootstrap SASS
 * Font-Awesome SASS
-* [MeanMenu](http://www.meanthemes.com/plugins/meanmenu/)
-* Render / helper functions for :
+* Render / helpers functions for :
     * Simple ul navigation
     * Bootstrap Multi-level navbar
-    * MeanMenu - Responsive menu for mobile device
     * Bootstrap Carousel
     * Bootstrap Cards
+    * Bootstrap Jumbotron
+    * Bootstrap Accordion
     
 ### Dependencies
 * jQuery
-* [Tether](http://tether.io/) (Tooltips and Popovers)
+* Popper.js
+* Bootstrap
+* FontAwesome
 
 ### Prequisites
 You'll want to install the following on your system before proceeding:
-* [Bower](https://bower.io/#install-bower/)
-* [Compass](http://compass-style.org/install/)
+* [Yarn](https://yarnpkg.com/lang/en/docs/install/)
 
 ### How To Install
 1. Download the [zip file](https://github.com/flydev-fr/site-pwbs4/archive/master.zip) at Github or clone directly the repo: ```git clone git@github.com:flydev-fr/site-pwbs4.git``` and skip the **step 2**.
@@ -36,15 +30,20 @@ You'll want to install the following on your system before proceeding:
 3. During the installation of ProcessWire, choose the profile **"ProcessWire Bootstrap 4 profile"**.
 
 ### After installation
-The last step is to install all assets and dependencies with Bower.
-* Open a terminal in *site/templates* and execute the following command-line: ```bower install```
+You can find the development file *(CSS/SCSS/JS)* in ```site/assets/dev/src```
+
+The profile can be used as is only with ```$config->debug``` set to ```false```. To use it in debug mode, you are required to install the dependencies with the package manager.
+
+Open a terminal in ```site/assets/dev``` and execute the following command-line: ```yarn```
+Available commands :
+
+* Rebuild, minify and bundle assets for release : ```yarn build```
 
 ### References
-* [Bootstrap v4 documentation](http://v4-alpha.getbootstrap.com/getting-started/introduction/)
+* [Bootstrap v4 documentation](http://v4.getbootstrap.com/getting-started/introduction/)
 * [ProcessWire documentation](https://processwire.com/docs/)
-* [MeanMenu documentation](https://github.com/meanthemes/meanMenu)
 * [ProcessWire Forum: bootstrap tag](https://processwire.com/talk/tags/forums/bootstrap/)
-* [ProcessWire Forum: bootstrap related posts](https://encrypted.google.com/#q=site:processwire.com%2Ftalk+bootstrap)
+* [ProcessWire Forum: bootstrap related posts](https://google.com/#q=site:processwire.com%2Ftalk+bootstrap)
 
 ### Credits
 * The ProcessWire staff

@@ -1,4 +1,4 @@
-<?php 
+<?php namespace ProcessWire;
 
 
 /**
@@ -159,7 +159,7 @@ function renderChildrenOf($pa, $output = '', $level = 0) {
         }
         $output .= '</li>';
     }
-    $outerclass = ($level == 1) ? 'nav navbar-nav' : 'dropdown-menu bg-inverse';
+    $outerclass = ($level == 1) ? 'nav navbar-nav mr-auto mt-2 mt-lg-0' : 'dropdown-menu';
 
     return "<ul class='$outerclass'>$output</ul>";
 }
@@ -217,8 +217,8 @@ function renderMobileNavbar($pa) {
  */
 function bsRenderCarousel($images) {
     $id = $images->get('page').$images->get('field')->id;
-    $out  = "<div id='carousel-{$id}' class='carousel slide' data-ride='carousel'>
-                <ol class='carousel-indicators hidden-sm-down'>";
+    $out  = "<div id='carousel-{$id}' class='carousel slide shadow' data-ride='carousel'>
+                <ol class='carousel-indicators'>";
     $i = 0;
     foreach($images as $image) {
         $class = ($i == 0) ? "active" : "";
@@ -226,22 +226,22 @@ function bsRenderCarousel($images) {
         $i++;
     }
     $out .= "</ol>
-             <div class='carousel-inner' role='listbox'>";
+             <div class='carousel-inner rounded' role='listbox'>";
     $i = 0;
     foreach($images as $image) {
         $class = ($i == 0) ? "active" : "";
-        $out .= "<div class='carousel-item $class'>
-                    <img src='{$image->url}' alt='{$image->description}' width='$image->width' height ='$image->height'>
+        $out .= "<div class='carousel-item carousel-item-fluid $class' style='background-image: url({$image->size(1600, 550, ['quality' => 100])->url});'>
+                    <!--<img src='{$image->size(1600, 550, 100)->url}' alt='{$image->description}' width='1600' height ='550'>-->
                  </div>";
         $i++;
     }
     $out .= "</div>";
-    $out .= "<a class='left carousel-control' href='#carousel-{$id}' role='button' data-slide='prev'>
-                <span class='icon-prev' aria-hidden='true'></span>
+    $out .= "<a class='carousel-control-prev' href='#carousel-{$id}' role='button' data-slide='prev'>
+                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
                 <span class='sr-only'>Previous</span>
              </a>
-             <a class='right carousel-control' href='#carousel-{$id}' role='button' data-slide='next'>
-                <span class='icon-next fa fa-chevron-right ' aria-hidden='true'></span>
+             <a class='carousel-control-next' href='#carousel-{$id}' role='button' data-slide='next'>
+                <span class='carousel-control-next-icon' aria-hidden='true'></span>
                 <span class='sr-only'>Next</span>
             </a>
         </div>";
@@ -256,16 +256,22 @@ function bsRenderCarousel($images) {
  * @return string
  */
 function bsRenderCards($cards) {
-    $out  = "<div class='card-deck-wrapper'>
-                <div class='card-deck'>";
+    $out  = "<div class='cards-wrapper'>
+                <div class='row'>";
     foreach ($cards as $card) {
-        $out .= "    <div class='card'>
-                        <div class='card-block'>
-                            <h4 class='card-title'>{$card->title}</h4>
-                            <p class='card-text'>{$card->summary}</p>
-                                    <p class='card-text'><a class='btn btn-lg {$card->button_class}' href='{$card->button_link}' role='button' data-toggle='tooltip' data-placement='right' title='{$card->button_tooltip}'><span class='fa {$card->button_icon}'></span> {$card->button_title}</a></p>
+        $out .= " <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-2'>   
+                     <div class='card bg-light shadow'>
+                        <img class='card-img-top' src='{$card->images->first->size(286, 180, ['quality' => 100])->url}' alt='{$card->images->first->description}'>
+                        
+                        <div class='card-body'>
+                          <h5 class='card-title text-capitalize'>{$card->title}</h5>
+                          <small class='card-text font-weight-light' style='line-height: .5rem'>{$card->summary}</small>
                         </div>
-                     </div>";
+                        <div class='card-footer'>
+                          <small class='text-muted'>Last updated ". datetime()->relativeTimeStr($card->modified, true) ."</small>
+                        </div>
+                     </div>
+                   </div>";
     }
     $out .= "    </div>";
     $out .= "</div>";
@@ -273,3 +279,74 @@ function bsRenderCards($cards) {
     return $out;
 }
 
+/**
+ * Render Bootstrap jumbotron
+ * @param $cards
+ * @return string
+ */
+function bsRenderJumbotron($h1, $paragraph, $lead = '', $btn = '', $btnLink = '#') {
+
+  $lead = empty($lead) ? '' : "<p class='lead'>$lead</p>";
+  $hr = empty($lead) ? '' : "<hr class='my-4'>";
+  $button = empty($btn) ? '' : "<a class='btn btn-primary btn-lg' href='$btnLink' role='button'>{$btn}</a>";
+  
+  $out  = "<div class='jumbotron'>
+            <h1 class='display-4'>$h1</h1>
+            $lead
+            $hr
+            $paragraph
+            $button
+          </div>";
+
+  return $out;
+}
+
+
+/**
+ * Render Bootstrap accordion from a PageArray
+ * @param $items (PageArray)
+ * @return string
+ */
+function bsRenderAccordion($items, $id, $collapsed = false) {
+
+  $show = ($collapsed === false) ? '' : 'show';
+
+  // $out is where we store the markup we are creating in this function
+  $out = '';
+
+  // cycle through all the items
+  foreach($items as $item) {
+
+      // render markup for each navigation item as an <li>
+      $out .= "<div class='card'><div class='card-header' id='heading-{$item->id}'>";
+    
+      // markup for the link
+      $out .= "<h5 class='mb-0'>
+                <button class='btn btn-link' type='button' data-toggle='collapse' data-target='#collapse-{$item->id}' aria-expanded='true' aria-controls='collapse-{$item->id}'>
+                  {$item->title}
+                </button>
+               </h5>";
+
+      
+      // if the item has summary text, include that too
+      if($item->summary) $out .= "<div id='collapse-{$item->id}' class='collapse $show' aria-labelledby='heading-{$item->id}' data-parent='#{$id}'>
+                                    <div class='card-body'>
+                                      {$item->summary}
+                                    </div>
+                                    <div class='card-footer'>
+                                      <a href='{$item->url}' class='btn btn-primary' type='button'>
+                                        view
+                                      </a>
+                                    </div>
+                                  </div>";
+
+      // close the list item
+      $out .= "</div></div>";
+  }
+
+  // if output was generated above, wrap it in a <ul>
+  if($out) $out = "<div class='accordion' id='{$id}'>$out</div>\n";
+
+  // return the markup we generated above
+  return $out;
+}
