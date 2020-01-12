@@ -21,7 +21,7 @@
     "watch-css": "nodemon -e sass -x \"yarn build-css\"",
     "build-js": "uglifyjs ./src/js/scripts.js -c -m -o ./build/js/scripts.min.js",
     "bundle": "copyfiles --flat ./node_modules/jquery/dist/jquery.min.js ./build/js && yarn rename && copyfiles --flat ./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js ./build/js && concat-cli -f ./build/**/*.js -o ../static/js/bundle.min.js",
-    "rename": "node -e \"require('fs').rename('/www/sites/pwbs4/wwwroot/site/assets/dev/build/js/jquery.min.js', './build/js/1-jquery.min.js', function(err) { if (err) console.log(err); console.log('jQuery File renamed!') })\"",
+    "rename": "node -e \"require('fs').rename('./build/js/jquery.min.js', './build/js/1-jquery.min.js', function(err) { if (err) console.log(err); console.log('jQuery File renamed!') })\"",
     "build": "yarn build-css && yarn build-js && yarn bundle && copyfiles --flat ./build/js/bundle.min.js ../static/js/ && copyfiles --flat ./css-dist/styles.min.css ../static/css/ && copyfiles --flat ./src/css/main.css ../static/css/"
   }
 }
