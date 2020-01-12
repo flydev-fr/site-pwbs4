@@ -1,0 +1,45 @@
+/* Space out content a bit */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 1.5rem;
+    color: rgb(151, 151, 151);
+}
+
+/* Media queries for responsive layout */
+@media only screen and (max-width: 768px) {
+    /* mobile layout */
+    body {
+        padding-top: 0;
+    }
+    body, td, textarea {
+        font-size: 100%;
+    }
+
+    #content {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    /* extra-wide desktop layout */
+    body, td, textarea {
+        font-size: 115%;
+        line-height: 1.8em;
+    }
+}
+
+
+.carousel-item-fluid {
+    width: 100%;
+    height: 550px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+

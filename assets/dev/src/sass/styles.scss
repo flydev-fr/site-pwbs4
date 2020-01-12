@@ -1,0 +1,38 @@
+@import "_variables.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+@import "../../node_modules/font-awesome/scss/font-awesome";
+
+// we define a new button
+$btn-bootstrap-bg:             #563d7c !default;
+$btn-bootstrap-color:          #ffffff;
+$btn-bootstrap-border:         #563d7c;
+.btn-bootstrap-outline {
+  @include button-outline-variant($btn-bootstrap-bg);
+}
+.btn-bootstrap {
+  @include button-variant($btn-bootstrap-color, $btn-bootstrap-bg, $btn-bootstrap-border);
+}
+
+.card-columns {
+  @include media-breakpoint-only(sm) {
+    column-count: 1;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(lg) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 4 !important;
+  }
+}
+
+.align_left {
+  float: left;
+}
+
+.shadow {
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
